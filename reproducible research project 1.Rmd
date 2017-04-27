@@ -97,7 +97,6 @@ newdata$date<-as.Date(newdata$date)
 str(newdata)
 ```
 ```{r echo = TRUE}
-weekdays(newdata$date)
 newdata$weekdays<-weekdays(newdata$date)
 ```
 ```{r echo = TRUE} 
