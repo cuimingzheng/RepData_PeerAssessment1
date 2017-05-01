@@ -203,7 +203,7 @@ hr {
 <body>
 <h1>Personal activity project</h1>
 
-<p>*following is code for Loading and preprocessing the data</p>
+<p>##following is code for Loading and preprocessing the data</p>
 
 <pre><code class="r">setwd(&quot;C:/Users/u292859/Desktop/Reproducible Research&quot;)
 url=&quot;https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2Factivity.zip&quot;
@@ -252,6 +252,8 @@ head(data)
 ##  $ interval: int  0 5 10 15 20 25 30 35 40 45 ...
 </code></pre>
 
+<h2>What is mean total number of steps taken per day?</h2>
+
 <ul>
 <li>follwoing is code for Calculate the total number of steps taken per day</li>
 </ul>
@@ -285,14 +287,14 @@ head(sum)
 </code></pre>
 
 <pre><code>## png 
-##   4
+##   3
 </code></pre>
 
 <pre><code class="r">dev.off()
 </code></pre>
 
-<pre><code>## windows 
-##       2
+<pre><code>## png 
+##   2
 </code></pre>
 
 <ul>
@@ -311,10 +313,9 @@ head(sum)
 <pre><code>## [1] 10395
 </code></pre>
 
-<ul>
-<li>follwoing is code of  the average daily activity pattern?
-Make a time series plot (i.e. type = &ldquo;l&rdquo;) of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all days (y-axis)</li>
-</ul>
+<h2>What is the average daily activity pattern?</h2>
+
+<p>Make a time series plot (i.e. type = &ldquo;l&rdquo;) of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all days (y-axis)</p>
 
 <pre><code class="r">average&lt;-aggregate(data$steps, by=list(interval=data$interval),FUN=&quot;mean&quot;,na.rm=TRUE)
 colnames(average)&lt;-c(&quot;interval&quot;,&quot;average_steps&quot;)
@@ -340,14 +341,14 @@ main =&quot;average daily activity pattern&quot;)
 </code></pre>
 
 <pre><code>## png 
-##   4
+##   3
 </code></pre>
 
 <pre><code class="r">dev.off()
 </code></pre>
 
-<pre><code>## windows 
-##       2
+<pre><code>## png 
+##   2
 </code></pre>
 
 <ul>
@@ -374,8 +375,9 @@ head(order)
 ## 101      820      171.1509
 </code></pre>
 
-<p>Imputing missing values
-*follwoing is code of Calculate and report the total number of missing values in the dataset </p>
+<h2>Imputing missing values</h2>
+
+<p>*follwoing is code of Calculate and report the total number of missing values in the dataset </p>
 
 <pre><code class="r">sum(is.na(data$steps))
 </code></pre>
@@ -438,14 +440,14 @@ hist(newsum$total_steps,col=&quot;red&quot;,main=&quot;total steps per day  with
 </code></pre>
 
 <pre><code>## png 
-##   4
+##   3
 </code></pre>
 
 <pre><code class="r">dev.off()
 </code></pre>
 
-<pre><code>## windows 
-##       2
+<pre><code>## png 
+##   2
 </code></pre>
 
 <ul>
@@ -464,9 +466,7 @@ hist(newsum$total_steps,col=&quot;red&quot;,main=&quot;total steps per day  with
 <pre><code>## [1] 10766.19
 </code></pre>
 
-<ul>
-<li>Are there differences in activity patterns between weekdays and weekends?</li>
-</ul>
+<p>##Are there differences in activity patterns between weekdays and weekends?</p>
 
 <p>1.Create a new factor variable in the dataset with two levels - &ldquo;weekday&rdquo; and &ldquo;weekend&rdquo; indicating whether a given date is a weekday or weekend day.</p>
 
@@ -539,7 +539,12 @@ head(weekdaysaverage)
 </code></pre>
 
 <pre><code class="r">library(ggplot2)
-ggplot(data=weekdaysaverage, aes(x=interval, y=average_steps)) + geom_line(stat=&quot;identity&quot;, aes(fill=interval))  +facet_grid(level~., scales=&quot;free&quot;)+  ggtitle(&quot;average number of steps by weekday and weekend&quot;) + xlab(&quot;interval&quot;)+ylab(&quot;average steps&quot;) 
+</code></pre>
+
+<pre><code>## Warning: package &#39;ggplot2&#39; was built under R version 3.3.3
+</code></pre>
+
+<pre><code class="r">ggplot(data=weekdaysaverage, aes(x=interval, y=average_steps)) + geom_line(stat=&quot;identity&quot;, aes(fill=interval))  +facet_grid(level~., scales=&quot;free&quot;)+  ggtitle(&quot;average number of steps by weekday and weekend&quot;) + xlab(&quot;interval&quot;)+ylab(&quot;average steps&quot;) 
 </code></pre>
 
 <pre><code>## Warning: Ignoring unknown aesthetics: fill
@@ -551,14 +556,14 @@ ggplot(data=weekdaysaverage, aes(x=interval, y=average_steps)) + geom_line(stat=
 </code></pre>
 
 <pre><code>## png 
-##   4
+##   3
 </code></pre>
 
 <pre><code class="r">dev.off()
 </code></pre>
 
-<pre><code>## windows 
-##       2
+<pre><code>## png 
+##   2
 </code></pre>
 
 </body>

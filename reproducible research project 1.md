@@ -1,6 +1,6 @@
 Personal activity project
 ==========================
-*following is code for Loading and preprocessing the data
+##following is code for Loading and preprocessing the data
 
 ```r
 setwd("C:/Users/u292859/Desktop/Reproducible Research")
@@ -54,6 +54,7 @@ str(data)
 ##  $ date    : Factor w/ 61 levels "2012-10-01","2012-10-02",..: 1 1 1 1 1 1 1 1 1 1 ...
 ##  $ interval: int  0 5 10 15 20 25 30 35 40 45 ...
 ```
+## What is mean total number of steps taken per day?
 * follwoing is code for Calculate the total number of steps taken per day
 
 ```r
@@ -88,7 +89,7 @@ dev.copy(png,file="total number of steps.png")
 
 ```
 ## png 
-##   4
+##   3
 ```
 
 ```r
@@ -96,8 +97,8 @@ dev.off()
 ```
 
 ```
-## windows 
-##       2
+## png 
+##   2
 ```
 
 * following is code for Calculate and report the mean and median of the total number of steps taken per day
@@ -117,7 +118,7 @@ median(sum$total_steps)
 ```
 ## [1] 10395
 ```
-* follwoing is code of  the average daily activity pattern?
+## What is the average daily activity pattern?
 Make a time series plot (i.e. type = "l") of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all days (y-axis)
  
 
@@ -150,7 +151,7 @@ dev.copy(png,file="average daily activity pattern")
 
 ```
 ## png 
-##   4
+##   3
 ```
 
 ```r
@@ -158,8 +159,8 @@ dev.off()
 ```
 
 ```
-## windows 
-##       2
+## png 
+##   2
 ```
 * following is code of Which 5-minute interval, on average across all the days in the dataset, contains the maximum number of steps?
 
@@ -186,7 +187,7 @@ head(order)
 ## 103      830      177.3019
 ## 101      820      171.1509
 ```
-Imputing missing values
+## Imputing missing values
 *follwoing is code of Calculate and report the total number of missing values in the dataset 
 
 ```r
@@ -259,7 +260,7 @@ dev.copy(png,file="total number of steps with new data.png")
 
 ```
 ## png 
-##   4
+##   3
 ```
 
 ```r
@@ -267,8 +268,8 @@ dev.off()
 ```
 
 ```
-## windows 
-##       2
+## png 
+##   2
 ```
 * follwoing are codes of  Calculate and report the mean and median total number of steps taken per day. Do these values differ from the estimates from the first part of the assignment? What is the impact of imputing missing data on the estimates of the total daily number of steps?
 
@@ -287,7 +288,7 @@ median(newsum$total_steps)
 ```
 ## [1] 10766.19
 ```
-* Are there differences in activity patterns between weekdays and weekends?
+##Are there differences in activity patterns between weekdays and weekends?
 
 
 1.Create a new factor variable in the dataset with two levels - "weekday" and "weekend" indicating whether a given date is a weekday or weekend day.
@@ -374,6 +375,13 @@ head(weekdaysaverage)
 
 ```r
 library(ggplot2)
+```
+
+```
+## Warning: package 'ggplot2' was built under R version 3.3.3
+```
+
+```r
 ggplot(data=weekdaysaverage, aes(x=interval, y=average_steps)) + geom_line(stat="identity", aes(fill=interval))  +facet_grid(level~., scales="free")+  ggtitle("average number of steps by weekday and weekend") + xlab("interval")+ylab("average steps") 
 ```
 
@@ -389,7 +397,7 @@ dev.copy(png,file="average number of steps by weekday and weekend.png")
 
 ```
 ## png 
-##   4
+##   3
 ```
 
 ```r
@@ -397,6 +405,6 @@ dev.off()
 ```
 
 ```
-## windows 
-##       2
+## png 
+##   2
 ```

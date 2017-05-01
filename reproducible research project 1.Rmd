@@ -1,6 +1,6 @@
 Personal activity project
 ==========================
-*following is code for Loading and preprocessing the data
+##following is code for Loading and preprocessing the data
 ```{r echo = TRUE}
 setwd("C:/Users/u292859/Desktop/Reproducible Research")
 url="https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2Factivity.zip"
@@ -15,6 +15,7 @@ data <- read.csv("C:/Users/u292859/Desktop/Reproducible Research/activity.csv")
 head(data)
 str(data)
 ```
+## What is mean total number of steps taken per day?
 * follwoing is code for Calculate the total number of steps taken per day
 ```{r echo = TRUE}
 sum<-aggregate(data$steps, by = list(date=data$date), FUN = "sum", na.rm = TRUE)
@@ -35,7 +36,7 @@ dev.off()
 mean(sum$total_steps)
 median(sum$total_steps)
 ```
-* follwoing is code of  the average daily activity pattern?
+## What is the average daily activity pattern?
 Make a time series plot (i.e. type = "l") of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all days (y-axis)
  
 ```{r echo = TRUE} 
@@ -57,7 +58,7 @@ order<-average[rev(order(average$average_steps)),]
 
 head(order)
 ```
-Imputing missing values
+## Imputing missing values
 *follwoing is code of Calculate and report the total number of missing values in the dataset 
 ```{r echo = TRUE} 
 sum(is.na(data$steps))
@@ -87,7 +88,7 @@ mean(newsum$total_steps)
 
 median(newsum$total_steps)
 ```
-* Are there differences in activity patterns between weekdays and weekends?
+##Are there differences in activity patterns between weekdays and weekends?
 
 
 1.Create a new factor variable in the dataset with two levels - "weekday" and "weekend" indicating whether a given date is a weekday or weekend day.
